@@ -242,6 +242,7 @@ int main(int argc, char** argv)
   MPI_Bcast(&L, 1, MPI_DOUBLE, root, MPI_COMM_WORLD);
   MPI_Bcast(&r[0], r.size(), MPI_DOUBLE, root, MPI_COMM_WORLD);
 
+  // Ref equation 3.9 in (https://www.researchgate.net/publication/311138439_A_study_on_the_structure_and_properties_of_silica_glass_and_silica_nanoparticles_via_Monte_Carlo_simulations)
   double U_local = 0, U_global = 0, u = 0, u_new = 0;
   U_local = ( RealandReciprocalSpace(r, L, L, L, kappa, 1, size, rank) 
              + kappa * PointEnergy(r, size, rank) / sqrt(Pi) ) * Unit_Coulomb + ShortRange(r, L, L, L, q1, q2, size, rank);
